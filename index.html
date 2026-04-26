@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter để tiếp tục</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff0000, #000000, #ff0000);
+      background-size: 600% 600%;
+      animation: gradientMove 8s ease infinite;
+      color: white;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 32px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.7);
+      animation: fadeIn 2s ease;
+    }
+
+    button {
+      padding: 15px 50px;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #ff0000, #ff4d4d);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,0,0.7);
+      animation: fadeIn 2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255,0,0,1);
+    }
+
+    #video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: none;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-out {
+      animation: fadeOut 0.8s forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Nhấn Enter để tiếp tục</h1>
+  <button id="enterBtn" onclick="playVideo()">ENTER</button>
+
+  <iframe id="video"
+    src=""
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+
+  <script>
+    function playVideo() {
+      document.getElementById("title").classList.add("fade-out");
+      document.getElementById("enterBtn").classList.add("fade-out");
+
+      setTimeout(() => {
+        const video = document.getElementById("video");
+        video.style.display = "block";
+        video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
